@@ -10,6 +10,7 @@ import co.id.macademy.R
 import co.id.macademy.data.CourseEntity
 import co.id.macademy.ui.reader.CourseReaderActivity
 import co.id.macademy.utils.DataDummy
+import co.id.macademy.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_detail_course.*
@@ -29,7 +30,9 @@ class DetailCourseActivity : AppCompatActivity() {
 
         val adapter = DetailCourseAdapter()
 
-        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailCourseViewModel::class.java]
+        val factory = ViewModelFactory.getInstance(this)
+
+        val viewModel = ViewModelProvider(this, factory)[DetailCourseViewModel::class.java]
 
         val extras = intent.extras
         if (extras != null) {
@@ -38,7 +41,7 @@ class DetailCourseActivity : AppCompatActivity() {
                 viewModel.setSelectedCourse(courseId)
                 val modules = viewModel.getModules()
                 adapter.setModules(modules)
-                populateCourse(viewModel.getCourse())
+                populateCourse(viewModel.getCourses())
             }
         }
 
