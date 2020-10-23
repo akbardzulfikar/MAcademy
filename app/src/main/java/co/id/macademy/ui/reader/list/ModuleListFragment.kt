@@ -10,11 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.id.macademy.R
-import co.id.macademy.data.ModuleEntity
+import co.id.macademy.data.source.local.entity.ModuleEntity
 import co.id.macademy.ui.reader.CourseReaderActivity
 import co.id.macademy.ui.reader.CourseReaderCallback
 import co.id.macademy.ui.reader.CourseReaderViewModel
-import co.id.macademy.utils.DataDummy
 import kotlinx.android.synthetic.main.fragment_module_list.*
 
 class ModuleListFragment : Fragment(), MyAdapterClickListener {

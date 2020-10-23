@@ -1,9 +1,8 @@
 package co.id.macademy.ui.academy
 
 import androidx.lifecycle.ViewModel
-import co.id.macademy.data.CourseEntity
-import co.id.macademy.data.source.AcademyRepository
-import co.id.macademy.utils.DataDummy
+import co.id.macademy.data.source.local.entity.CourseEntity
+import co.id.macademy.data.AcademyRepository
 
 class AcademyViewModel(private val academyRepository: AcademyRepository) : ViewModel() {
 

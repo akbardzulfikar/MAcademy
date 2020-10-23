@@ -1,7 +1,7 @@
 package co.id.macademy.di
 
 import android.content.Context
-import co.id.macademy.data.source.AcademyRepository
+import co.id.macademy.data.AcademyRepository
 import co.id.macademy.data.source.remote.RemoteDataSource
 import co.id.macademy.utils.JsonHelper
 

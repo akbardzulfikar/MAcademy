@@ -1,10 +1,9 @@
 package co.id.macademy.ui.detail
 
 import androidx.lifecycle.ViewModel
-import co.id.macademy.data.CourseEntity
-import co.id.macademy.data.ModuleEntity
-import co.id.macademy.data.source.AcademyRepository
-import co.id.macademy.utils.DataDummy
+import co.id.macademy.data.source.local.entity.CourseEntity
+import co.id.macademy.data.source.local.entity.ModuleEntity
+import co.id.macademy.data.AcademyRepository
 
 class DetailCourseViewModel(private val academyRepository: AcademyRepository) : ViewModel() {
     private lateinit var courseId: String

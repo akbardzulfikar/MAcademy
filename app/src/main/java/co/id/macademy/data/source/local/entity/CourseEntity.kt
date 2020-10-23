@@ -1,4 +1,4 @@
-package co.id.macademy.data
+package co.id.macademy.data.source.local.entity
 
 data class CourseEntity (
     var courseId: String,

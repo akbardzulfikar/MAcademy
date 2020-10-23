@@ -9,8 +9,7 @@ import androidx.core.app.ShareCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.id.macademy.R
-import co.id.macademy.data.CourseEntity
-import co.id.macademy.utils.DataDummy
+import co.id.macademy.data.source.local.entity.CourseEntity
 import co.id.macademy.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_bookmark.*
 

@@ -1,11 +1,12 @@
-package co.id.macademy.data.source
+package co.id.macademy.data
 
-import co.id.macademy.data.ContentEntity
-import co.id.macademy.data.CourseEntity
-import co.id.macademy.data.ModuleEntity
+import co.id.macademy.data.source.local.entity.ContentEntity
+import co.id.macademy.data.source.local.entity.CourseEntity
+import co.id.macademy.data.source.local.entity.ModuleEntity
 import co.id.macademy.data.source.remote.RemoteDataSource
 
-class AcademyRepository private constructor(private val remoteDataSource: RemoteDataSource) : AcademyDataSource {
+class AcademyRepository private constructor(private val remoteDataSource: RemoteDataSource) :
+    AcademyDataSource {
 
     companion object {
         @Volatile

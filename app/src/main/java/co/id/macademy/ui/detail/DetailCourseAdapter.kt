@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.id.macademy.R
-import co.id.macademy.data.ModuleEntity
+import co.id.macademy.data.source.local.entity.ModuleEntity
 import kotlinx.android.synthetic.main.items_module_list.view.*
 import java.util.ArrayList
 

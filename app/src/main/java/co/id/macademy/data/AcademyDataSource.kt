@@ -1,7 +1,7 @@
-package co.id.macademy.data.source
+package co.id.macademy.data
 
-import co.id.macademy.data.CourseEntity
-import co.id.macademy.data.ModuleEntity
+import co.id.macademy.data.source.local.entity.CourseEntity
+import co.id.macademy.data.source.local.entity.ModuleEntity
 
 interface AcademyDataSource {
 

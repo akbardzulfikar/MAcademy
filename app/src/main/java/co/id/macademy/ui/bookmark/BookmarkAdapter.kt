@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.id.macademy.R
-import co.id.macademy.data.CourseEntity
+import co.id.macademy.data.source.local.entity.CourseEntity
 import co.id.macademy.ui.detail.DetailCourseActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions

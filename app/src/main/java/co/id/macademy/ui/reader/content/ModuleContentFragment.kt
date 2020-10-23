@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import co.id.macademy.R
-import co.id.macademy.data.ContentEntity
-import co.id.macademy.data.ModuleEntity
+import co.id.macademy.data.source.local.entity.ModuleEntity
 import co.id.macademy.ui.reader.CourseReaderViewModel
 import co.id.macademy.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_module_content.*

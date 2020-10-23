@@ -1,10 +1,8 @@
 package co.id.macademy.ui.reader
 
 import androidx.lifecycle.ViewModel
-import co.id.macademy.data.ContentEntity
-import co.id.macademy.data.ModuleEntity
-import co.id.macademy.data.source.AcademyRepository
-import co.id.macademy.utils.DataDummy
+import co.id.macademy.data.source.local.entity.ModuleEntity
+import co.id.macademy.data.AcademyRepository
 import java.util.ArrayList
 
 class CourseReaderViewModel(private val academyRepository: AcademyRepository) : ViewModel() {

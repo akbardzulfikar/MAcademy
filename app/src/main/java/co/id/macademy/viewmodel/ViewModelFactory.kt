@@ -3,7 +3,7 @@ package co.id.macademy.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import co.id.macademy.data.source.AcademyRepository
+import co.id.macademy.data.AcademyRepository
 import co.id.macademy.di.Injection
 import co.id.macademy.ui.academy.AcademyViewModel
 import co.id.macademy.ui.bookmark.BookmarkViewModel
