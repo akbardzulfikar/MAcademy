@@ -139,7 +139,7 @@ object DataDummy {
             "https://www.dicoding.com/images/small/academy/belajar_membuat_aplikasi_android_untuk_pemula_logo_070119140911.jpg"))
         return courses
     }
-    fun generateRemoteDummyModules(courseId: String): List<ModuleResponse> {
+    fun generateRemoteDummyModules(courseId: String): ArrayList<ModuleResponse> {
         val modules = ArrayList<ModuleResponse>()
         modules.add(ModuleResponse(
             "{$courseId}m1",
