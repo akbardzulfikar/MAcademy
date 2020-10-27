@@ -2,6 +2,7 @@ package co.id.macademy.ui.home
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.contrib.RecyclerViewActions
@@ -11,6 +12,9 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.rule.ActivityTestRule
 import co.id.macademy.R
 import co.id.macademy.utils.DataDummy
+import co.id.macademy.utils.EspressoIdlingResource
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
@@ -21,9 +25,18 @@ class HomeActivityTest {
     @get:Rule
     var activityRule = ActivityTestRule(HomeActivity::class.java)
 
+    @Before
+    fun setUp() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.idlingResource)
+    }
+
+    @After
+    fun tearDown() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.idlingResource)
+    }
+
     @Test
     fun loadCourses() {
-        delay2seconds()
         Espresso.onView(withId(R.id.rv_academy))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(withId(R.id.rv_academy))
@@ -32,12 +45,10 @@ class HomeActivityTest {
 
     @Test
     fun loadDetailCourse() {
-        delay2seconds()
         Espresso.onView(withId(R.id.rv_academy))
             .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
                 ViewActions.click()
             ))
-        delay2seconds()
         Espresso.onView(withId(R.id.text_title))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(withId(R.id.text_title))
@@ -50,33 +61,26 @@ class HomeActivityTest {
 
     @Test
     fun loadModule() {
-        delay2seconds()
         Espresso.onView(withId(R.id.rv_academy))
             .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
                 ViewActions.click()
             ))
-        delay2seconds()
         Espresso.onView(withId(R.id.btn_start)).perform(ViewActions.click())
-        delay2seconds()
         Espresso.onView(withId(R.id.rv_module))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
     @Test
     fun loadDetailModule() {
-        delay2seconds()
         Espresso.onView(withId(R.id.rv_academy))
             .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
                 ViewActions.click()
             ))
-        delay2seconds()
         Espresso.onView(withId(R.id.btn_start)).perform(ViewActions.click())
-        delay2seconds()
         Espresso.onView(withId(R.id.rv_module))
             .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
                 ViewActions.click()
             ))
-        delay2seconds()
         Espresso.onView(withId(R.id.web_view))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
@@ -84,18 +88,17 @@ class HomeActivityTest {
     @Test
     fun loadBookmarks() {
         Espresso.onView(ViewMatchers.withText("Bookmark")).perform(ViewActions.click())
-        delay2seconds()
         Espresso.onView(withId(R.id.rv_bookmark))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(withId(R.id.rv_bookmark))
             .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyCourse.size))
     }
-
-    private fun delay2seconds() {
-        try {
-            Thread.sleep(2000)
-        } catch (e: InterruptedException) {
-            e.printStackTrace()
-        }
-    }
+//
+//    private fun delay2seconds() {
+//        try {
+//            Thread.sleep(2000)
+//        } catch (e: InterruptedException) {
+//            e.printStackTrace()
+//        }
+//    }
 }

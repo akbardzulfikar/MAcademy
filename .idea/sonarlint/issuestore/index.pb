@@ -165,3 +165,7 @@ w
 Gapp/src/test/java/co/id/macademy/ui/reader/CourseReaderViewModelTest.kt,9/7/97103f404513427ad492e2b15188a2c46ba6ed36
 n
 >app/src/test/java/co/id/macademy/data/AcademyRepositoryTest.kt,d/5/d568a3d2c9b606207c06cba2b9489a6ce05c0abd
+j
+:app/src/main/java/co/id/macademy/utils/LiveDataTestUtil.kt,e/a/ea403c549ef871bb83de3a512eb0a3ea5021ef39
+s
+Capp/src/androidTest/java/co/id/macademy/ui/home/HomeActivityTest.kt,4/4/441a41db590820f64acf247da6f9d8856b7d46a5
