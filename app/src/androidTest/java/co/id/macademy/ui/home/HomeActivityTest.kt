@@ -39,16 +39,14 @@ class HomeActivityTest {
     fun loadCourses() {
         Espresso.onView(withId(R.id.rv_academy))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        Espresso.onView(withId(R.id.rv_academy))
-            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyCourse.size))
+        Espresso.onView(withId(R.id.rv_academy)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyCourse.size))
     }
 
     @Test
     fun loadDetailCourse() {
-        Espresso.onView(withId(R.id.rv_academy))
-            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
-                ViewActions.click()
-            ))
+        Espresso.onView(withId(R.id.rv_academy)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
+            ViewActions.click()
+        ))
         Espresso.onView(withId(R.id.text_title))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(withId(R.id.text_title))
@@ -56,15 +54,14 @@ class HomeActivityTest {
         Espresso.onView(withId(R.id.text_date))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(withId(R.id.text_date))
-            .check(ViewAssertions.matches(ViewMatchers.withText("Deadline ${dummyCourse[0].deadline}")))
+            .check(ViewAssertions.matches(withText("Deadline ${dummyCourse[0].deadline}")))
     }
 
     @Test
     fun loadModule() {
-        Espresso.onView(withId(R.id.rv_academy))
-            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
-                ViewActions.click()
-            ))
+        Espresso.onView(withId(R.id.rv_academy)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
+            ViewActions.click()
+        ))
         Espresso.onView(withId(R.id.btn_start)).perform(ViewActions.click())
         Espresso.onView(withId(R.id.rv_module))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
@@ -72,33 +69,35 @@ class HomeActivityTest {
 
     @Test
     fun loadDetailModule() {
-        Espresso.onView(withId(R.id.rv_academy))
-            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
-                ViewActions.click()
-            ))
+        Espresso.onView(withId(R.id.rv_academy)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
+            ViewActions.click()
+        ))
         Espresso.onView(withId(R.id.btn_start)).perform(ViewActions.click())
-        Espresso.onView(withId(R.id.rv_module))
-            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
-                ViewActions.click()
-            ))
+        Espresso.onView(withId(R.id.rv_module)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
+            ViewActions.click()
+        ))
         Espresso.onView(withId(R.id.web_view))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
     @Test
     fun loadBookmarks() {
-        Espresso.onView(ViewMatchers.withText("Bookmark")).perform(ViewActions.click())
+        Espresso.onView(withId(R.id.rv_academy)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
+            ViewActions.click()
+        ))
+        Espresso.onView(withId(R.id.action_bookmark)).perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.isRoot()).perform(ViewActions.pressBack())
+        Espresso.onView(withText("Bookmark")).perform(ViewActions.click())
         Espresso.onView(withId(R.id.rv_bookmark))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        Espresso.onView(withId(R.id.rv_bookmark))
-            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyCourse.size))
+        Espresso.onView(withId(R.id.rv_bookmark)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
+            ViewActions.click()
+        ))
+        Espresso.onView(withId(R.id.text_title))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(withId(R.id.text_date))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(withId(R.id.action_bookmark)).perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.isRoot()).perform(ViewActions.pressBack())
     }
-//
-//    private fun delay2seconds() {
-//        try {
-//            Thread.sleep(2000)
-//        } catch (e: InterruptedException) {
-//            e.printStackTrace()
-//        }
-//    }
 }

@@ -191,3 +191,15 @@ _
 -app/src/main/java/co/id/macademy/vo/Status.kt,1/e/1ea128a530375e50a218fe170a745540f9fcf53a
 m
 =app/src/main/java/co/id/macademy/data/NetworkBoundResource.kt,2/2/228992f513d079aef13be5463b04c6e4ff679451
+b
+2app/src/main/java/co/id/macademy/utils/MyButton.kt,5/c/5c45b995b607177e8b0c980d757be0abb08a4fc7
+b
+2app/src/main/res/drawable/ic_bookmark_selector.xml,e/1/e1909444771d367d36dae06ed53fcaf0a95a78de
+a
+1app/src/main/res/drawable/ic_bookmarked_white.xml,1/5/15a14c0123e8451dd01cddfe5bcc76fca229c4c8
+c
+3app/src/main/res/layout/fragment_module_content.xml,4/7/475465c2dae7cfde39901587087997905df46969
+U
+%app/src/main/res/menu/menu_detail.xml,a/d/ad1ce7ce324387575fd48c3edfb27c99d7d5892b
+_
+/app/src/main/res/drawable/ic_bookmark_white.xml,4/e/4e5510f63549ff0862f9f94b3164404dc68cc45e
