@@ -3,6 +3,7 @@ package co.id.macademy.ui.detail
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +13,7 @@ import co.id.macademy.R
 import co.id.macademy.data.source.local.entity.CourseEntity
 import co.id.macademy.ui.reader.CourseReaderActivity
 import co.id.macademy.viewmodel.ViewModelFactory
+import co.id.macademy.vo.Status
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_detail_course.*
@@ -40,14 +42,27 @@ class DetailCourseActivity : AppCompatActivity() {
             val courseId = extras.getString(EXTRA_COURSE)
             if (courseId != null) {
                 viewModel.setSelectedCourse(courseId)
-                progress_bar.visibility = View.VISIBLE
-                viewModel.getModules().observe(this, Observer { modules ->
-                    progress_bar.visibility = View.GONE
-                    adapter.setModules(modules)
-                    adapter.notifyDataSetChanged()
+                viewModel.courseModule.observe(this, Observer { courseWithModuleResource ->
+                    if (courseWithModuleResource != null) {
+                        when (courseWithModuleResource.status) {
+                            Status.LOADING -> progress_bar.visibility = View.VISIBLE
+                            Status.SUCCESS -> if (courseWithModuleResource.data != null) {
+                                progress_bar.visibility = View.GONE
+                                adapter.setModules(courseWithModuleResource.data.mModules)
+                                adapter.notifyDataSetChanged()
+                                populateCourse(courseWithModuleResource.data.mCourse)
+                            }
+                            Status.ERROR -> {
+                                progress_bar.visibility = View.GONE
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Terjadi kesalahan",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                    }
                 })
-                viewModel.getCourses().observe(this, Observer { course -> populateCourse(course) })
-
             }
         }
 

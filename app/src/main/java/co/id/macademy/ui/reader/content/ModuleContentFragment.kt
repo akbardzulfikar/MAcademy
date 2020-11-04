@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import co.id.macademy.R
 import co.id.macademy.data.source.local.entity.ModuleEntity
 import co.id.macademy.ui.reader.CourseReaderViewModel
 import co.id.macademy.viewmodel.ViewModelFactory
+import co.id.macademy.vo.Status
 import kotlinx.android.synthetic.main.fragment_module_content.*
 
 class ModuleContentFragment : Fragment() {
@@ -32,11 +34,21 @@ class ModuleContentFragment : Fragment() {
             val factory = ViewModelFactory.getInstance(requireActivity())
 
             val viewModel = ViewModelProvider(requireActivity(), factory)[CourseReaderViewModel::class.java]
-            progress_bar.visibility = View.VISIBLE
-            viewModel.getSelectedModule().observe(this, Observer{ module ->
-                if (module != null) {
-                    progress_bar.visibility = View.GONE
-                    populateWebView(module)
+            viewModel.selectedModule.observe(this, Observer{ moduleEntity ->
+                if (moduleEntity != null) {
+                    when (moduleEntity.status) {
+                        Status.LOADING -> progress_bar.visibility = View.VISIBLE
+                        Status.SUCCESS -> if (moduleEntity.data != null) {
+                            progress_bar.visibility = View.GONE
+                            if (moduleEntity.data.contentEntity != null) {
+                                populateWebView(moduleEntity.data)
+                            }
+                        }
+                        Status.ERROR -> {
+                            progress_bar.visibility = View.GONE
+                            Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             })
         }

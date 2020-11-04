@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -60,6 +61,10 @@ dependencies {
     implementation "androidx.test.espresso:espresso-idling-resource:$idleResourceVersion"
 
     implementation "androidx.lifecycle:lifecycle-viewmodel:$archLifecycleVersion"
+
+    //room
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 
 }
 repositories {
