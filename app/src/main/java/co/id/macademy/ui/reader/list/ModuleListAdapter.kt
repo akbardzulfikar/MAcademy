@@ -4,9 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import co.id.macademy.R
 import co.id.macademy.data.source.local.entity.ModuleEntity
+import co.id.macademy.ui.detail.DetailCourseAdapter
+import kotlinx.android.synthetic.main.items_module_list.view.*
 import java.util.ArrayList
 
 class ModuleListAdapter internal constructor(private val listener: MyAdapterClickListener) : RecyclerView.Adapter<ModuleListAdapter.ModuleViewHolder>() {
@@ -44,4 +47,5 @@ class ModuleListAdapter internal constructor(private val listener: MyAdapterClic
 internal interface MyAdapterClickListener {
     fun onItemClicked(position: Int, moduleId: String)
 }
+
 
