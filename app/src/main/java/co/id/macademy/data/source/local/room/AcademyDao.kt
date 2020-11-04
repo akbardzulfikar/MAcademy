@@ -1,6 +1,7 @@
 package co.id.macademy.data.source.local.room
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.*
 import co.id.macademy.data.source.local.entity.CourseEntity
 import co.id.macademy.data.source.local.entity.CourseWithModule
@@ -10,10 +11,10 @@ import co.id.macademy.data.source.local.entity.ModuleEntity
 interface AcademyDao {
 
     @Query("SELECT * FROM courseentities")
-    fun getCourses(): LiveData<List<CourseEntity>>
+    fun getCourses(): DataSource.Factory<Int, CourseEntity>
 
     @Query("SELECT * FROM courseentities where bookmarked = 1")
-    fun getBookmarkedCourse(): LiveData<List<CourseEntity>>
+    fun getBookmarkedCourse(): DataSource.Factory<Int, CourseEntity>
 
     @Transaction
     @Query("SELECT * FROM courseentities WHERE courseId = :courseId")
